@@ -242,6 +242,62 @@ footer{
         padding:32px 22px 24px;
     }
 }
+
+.form-status{
+    display:none;
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:8px;
+    text-align:center;
+    font-size:0.95rem;
+}
+
+.form-status.error{
+    display:block;
+    background:rgba(190,45,45,.18);
+    border:1px solid rgba(255,110,110,.55);
+    color:#ffd6d6;
+}
+
+.confirmation{
+    display:none;
+    text-align:center;
+    padding:18px 6px 8px;
+}
+
+.confirmation.is-visible{
+    display:block;
+}
+
+.confirmation-icon{
+    width:72px;
+    height:72px;
+    margin:0 auto 22px;
+    border:2px solid #d7b56d;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#d7b56d;
+    font-size:38px;
+    font-weight:600;
+}
+
+.confirmation h2{
+    color:#d7b56d;
+    margin-bottom:14px;
+}
+
+.confirmation p{
+    color:#d8d8d8;
+    margin-bottom:24px;
+}
+
+.confirmation .button{
+    margin-top:8px;
+    border-radius:40px;
+}
+
 </style>
 </head>
 
@@ -298,16 +354,24 @@ Let’s connect to discuss your player’s goals and identify the right next ste
 
         <h2 id="contactModalTitle">Let's Connect</h2>
 
-        <form action="https://formspree.io/f/mojgdjan" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/mojgdjan" method="POST">
             <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
             <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
-            <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" autocomplete="tel" required>
             <input type="text" name="player_name" placeholder="Player Name" required>
             <input type="text" name="player_age" placeholder="Player Age">
             <textarea name="message" placeholder="Tell me about your player and their goals.." required></textarea>
 
-            <button type="submit">Send Message</button>
+            <button type="submit" id="submitContactForm">Send Message</button>
+            <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
         </form>
+
+        <div id="contactConfirmation" class="confirmation" aria-live="polite">
+            <div class="confirmation-icon" aria-hidden="true">✓</div>
+            <h2>Thank You!</h2>
+            <p>Thank you for your message. I’ll be in touch soon to discuss your player’s goals and next steps.</p>
+            <button type="button" class="button" id="closeConfirmation">Close</button>
+        </div>
     </div>
 </div>
 
@@ -320,6 +384,11 @@ Let’s connect to discuss your player’s goals and identify the right next ste
 const modal = document.getElementById('contactModal');
 const openButton = document.getElementById('openContactModal');
 const closeButton = document.getElementById('closeContactModal');
+const contactForm = document.getElementById('contactForm');
+const submitButton = document.getElementById('submitContactForm');
+const formStatus = document.getElementById('formStatus');
+const confirmation = document.getElementById('contactConfirmation');
+const closeConfirmationButton = document.getElementById('closeConfirmation');
 
 function openModal(){
     modal.classList.add('is-open');
@@ -328,11 +397,21 @@ function openModal(){
     closeButton.focus();
 }
 
+function resetContactModal(){
+    contactForm.style.display = '';
+    confirmation.classList.remove('is-visible');
+    formStatus.className = 'form-status';
+    formStatus.textContent = '';
+    submitButton.disabled = false;
+    submitButton.textContent = 'Send Message';
+}
+
 function closeModal(){
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
-    openButton.focus(); 
+    resetContactModal();
+    openButton.focus();
 }
 
 openButton.addEventListener('click', openModal);
@@ -349,6 +428,50 @@ document.addEventListener('keydown', function(event){
         closeModal();
     }
 });
+
+contactForm.addEventListener('submit', async function(event){
+    event.preventDefault();
+
+    formStatus.className = 'form-status';
+    formStatus.textContent = '';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    try{
+        const response = await fetch(contactForm.action, {
+            method: contactForm.method,
+            body: new FormData(contactForm),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if(response.ok){
+            contactForm.reset();
+            contactForm.style.display = 'none';
+            confirmation.classList.add('is-visible');
+            closeConfirmationButton.focus();
+        }else{
+            const data = await response.json().catch(() => ({}));
+            const message = data.errors
+                ? data.errors.map(error => error.message).join(' ')
+                : 'Your message could not be sent. Please check the form and try again.';
+
+            formStatus.textContent = message;
+            formStatus.className = 'form-status error';
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
+        }
+    }catch(error){
+        formStatus.textContent = 'There was a connection problem. Please try again.';
+        formStatus.className = 'form-status error';
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+    }
+});
+
+closeConfirmationButton.addEventListener('click', closeModal);
+
 </script>
 </body>
 </html>
