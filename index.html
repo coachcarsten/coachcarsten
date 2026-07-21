@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CoachCarsten.com | Youth Soccer Coaching</title>
+<title>CoachCarsten.com | Soccer Coaching</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -77,7 +77,7 @@ text-align:left;
 }
 
 .hero h1{
-	color:#d7b56d;
+    color:#d7b56d;
     font-size:2.5rem;
     margin-bottom:20px;
     font-weight:700;
@@ -299,6 +299,23 @@ footer{
     border-radius:40px;
 }
 
+
+.legal-links{margin-top:12px;font-size:.9rem;}
+.legal-links a{color:#d7b56d;text-decoration:none;}
+.legal-links a:hover{text-decoration:underline;}
+.privacy-policy{
+max-width:900px;
+margin:50px auto 20px;
+padding:30px;
+background:#01112D;
+border:1px solid #2a3658;
+border-radius:12px;
+font-size:.95rem;
+color:#d8d8d8;
+}
+.privacy-policy h2{color:#d7b56d;margin-bottom:16px;}
+.privacy-policy h3{color:#fff;margin:18px 0 8px;}
+
 </style>
 </head>
 
@@ -313,12 +330,14 @@ footer{
     <div class="container">
         <div class="hero-content">
         <h1>Maximize Your Potential</h1>
+        <h2> </h2>
 
         <p>
         Every player’s development journey is different. Whether it is preparing to move from recreational to club soccer, competing for a place on a new or higher-level team, supplementing team practice, or refining skills during the off-season.
-			<br><br>Blending proven European training methodology with a modern, high-performance approach to player development, each session is designed to develop Mindset, refine Technique, and elevate Game IQ — creating confident players who make better decisions, perform under pressure, and maximize their potential on the field.
+<br><br>Blending proven European training methodology with a modern, high-performance approach to player development, each session is designed to develop Mindset, refine Technique, and elevate Game IQ — creating confident players who make better decisions, perform under pressure, and maximize their potential on the field.
 <br><br>
-Let's connect to discuss your player's goals and identify the training approach that best supports their development and long-term success.<br><br>
+Let's connect to discuss your player's goals and identify the training approach that best supports their development and long-term success.
+<br><br>
                     </p>
 
         <div class="coach-profile">
@@ -329,10 +348,11 @@ Let's connect to discuss your player's goals and identify the training approach 
                 <h3>Carsten Doerfer</h3>
                 <p>
 <span style="color:#d7b56d;">•</span> U.S. Soccer D Licensed Coach<br>
+<span style="color:#d7b56d;">•</span> U.S. Soccer Background Checked<br>
 <span style="color:#d7b56d;">•</span> 7 Years Youth Soccer Coaching Experience<br>
 <span style="color:#d7b56d;">•</span> 10 Years Competitive Playing Experience in Europe<br>
 <span style="color:#d7b56d;">•</span> SafeSport Certified<br>
-<span style="color:#d7b56d;">•</span> U.S. Soccer Background Checked<br>
+
 
 
 
@@ -373,9 +393,28 @@ Let's connect to discuss your player's goals and identify the training approach 
     </div>
 </div>
 
+
+
+<div id="privacyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true">
+    <div class="modal-content">
+        <button type="button" class="close" id="closePrivacyModal" aria-label="Close privacy policy">&times;</button>
+        <h2 id="privacyTitle">Privacy Policy</h2>
+        <p><strong>Effective Date:</strong> July 21, 2026</p>
+        <p>CoachCarsten.com respects your privacy. Information you submit through the contact form is used only to respond to your inquiry and provide coaching services.</p>
+        <h3>Information We Collect</h3>
+        <p>We collect the information you voluntarily provide, including your name, email address, phone number, and message.</p>
+        <h3>How We Use Your Information</h3>
+        <p>Your information is used only to communicate with you about coaching services. We do not sell or rent your personal information.</p>
+        <h3>Third-Party Services</h3>
+        <p>This website uses Formspree to securely process contact form submissions.</p>
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:letsgo@coachcarsten.com">letsgo@coachcarsten.com</a></p>
+    </div>
+</div>
+
 <footer>
     © 2026 <span class="highlight">CoachCarsten.com</span><br>
-    Located in Fort Mill, South Carolina
+    Located in Fort Mill, South Carolina<br><div class="legal-links"><a href="#" id="openPrivacyModal">Privacy Policy</a></div>
 </footer>
 
 <script>
@@ -469,6 +508,26 @@ contactForm.addEventListener('submit', async function(event){
 });
 
 closeConfirmationButton.addEventListener('click', closeModal);
+
+
+// Privacy Policy Modal
+const privacyModal=document.getElementById('privacyModal');
+const openPrivacyModal=document.getElementById('openPrivacyModal');
+const closePrivacyModal=document.getElementById('closePrivacyModal');
+openPrivacyModal.addEventListener('click',function(e){
+e.preventDefault();
+privacyModal.classList.add('is-open');
+privacyModal.setAttribute('aria-hidden','false');
+document.body.classList.add('modal-open');
+});
+closePrivacyModal.addEventListener('click',closePrivacy);
+privacyModal.addEventListener('click',e=>{if(e.target===privacyModal)closePrivacy();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&privacyModal.classList.contains('is-open'))closePrivacy();});
+function closePrivacy(){
+privacyModal.classList.remove('is-open');
+privacyModal.setAttribute('aria-hidden','true');
+document.body.classList.remove('modal-open');
+}
 
 </script>
 </body>
