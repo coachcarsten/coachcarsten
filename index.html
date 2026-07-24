@@ -99,14 +99,7 @@ header img{
     font-weight:700;
 }
 
-.hero h2{
-    color:var(--gold);
-    font-weight:500;
-    margin-bottom:25px;
-}
-
 .hero p{
-    max-width:none;
     margin:0 auto;
     font-size:1.15rem;
     color:var(--text);
@@ -250,58 +243,51 @@ footer{
     font-weight:600;
 }
 
-/* Instagram button */
-.instagram-button{
+/* Premium Instagram link using the Instagram brand mark */
+.instagram-link{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
-    position:relative;
-    overflow:hidden;
-    padding:13px 24px;
-    border:0;
-    border-radius:40px;
-    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    gap:11px;
+    padding:8px 10px;
+    border-radius:10px;
     color:var(--white);
     text-decoration:none;
-    font-weight:700;
-    line-height:1.2;
-    box-shadow:0 8px 24px rgba(214,41,118,.28);
-    transition:filter .3s ease, transform .15s ease;
+    font-weight:600;
+    line-height:1;
+    transition:color .25s ease, transform .2s ease, opacity .25s ease;
     -webkit-tap-highlight-color:transparent;
-    -webkit-appearance:none;
-    appearance:none;
-    isolation:isolate;
 }
 
-.instagram-button:hover{
-    filter:brightness(1.18);
+.instagram-link:hover{
+    color:var(--gold);
+    transform:translateY(-1px);
 }
 
-.instagram-button:active{
-    filter:brightness(.95);
+.instagram-link:active{
     transform:scale(.98);
+    opacity:.85;
 }
 
-.instagram-button:focus{
+.instagram-link:focus{
     outline:none;
 }
 
-.instagram-button:focus-visible{
-    outline:3px solid var(--white);
+.instagram-link:focus-visible{
+    outline:2px solid var(--white);
     outline-offset:4px;
 }
 
-.instagram-button svg{
+.instagram-logo{
     display:block;
-    width:22px;
-    height:22px;
+    width:28px;
+    height:28px;
     flex-shrink:0;
-    pointer-events:none;
+    color:currentColor;
 }
 
-.instagram-button span{
-    pointer-events:none;
+.instagram-handle{
+    line-height:1.2;
 }
 
 .instagram-footer{
@@ -355,7 +341,7 @@ footer{
     color:var(--text);
 }
 
-.modal-content a{
+.modal-content a:not(.instagram-link){
     color:var(--gold);
 }
 
@@ -431,17 +417,28 @@ footer{
 }
 
 .confirmation p{
-    margin-bottom:24px;
+    margin-bottom:20px;
     color:var(--text);
 }
 
-.confirmation .instagram-button{
-    margin-top:8px;
-    margin-bottom:14px;
+.confirmation-instagram{
+    display:flex;
+    justify-content:center;
+    margin:2px 0 10px;
+}
+
+/* The confirmation link intentionally uses the exact same
+   white Instagram glyph, white handle, and gold hover state as the footer. */
+.confirmation-instagram .instagram-link{
+    color:var(--white);
+}
+
+.confirmation-instagram .instagram-link:hover{
+    color:var(--gold);
 }
 
 .confirmation .button{
-    margin-top:8px;
+    margin-top:14px;
     border-radius:40px;
 }
 
@@ -470,10 +467,6 @@ footer{
 
     .hero h1{
         font-size:2.2rem;
-    }
-
-    .hero h2{
-        font-size:1.2rem;
     }
 
     .hero p{
@@ -517,9 +510,14 @@ footer{
         width:230px;
     }
 
-    .instagram-button{
-        padding:12px 18px;
-        font-size:.95rem;
+    .instagram-link{
+        gap:9px;
+        font-size:.94rem;
+    }
+
+    .instagram-logo{
+        width:26px;
+        height:26px;
     }
 
     footer{
@@ -559,7 +557,7 @@ footer{
                     <br><br>
                     Blending proven European training methodology with a modern, high-performance approach to player development, each session is designed to develop Mindset, refine Technique, and elevate Soccer IQ — creating confident players who make better decisions, perform under pressure, and maximize their potential on the field.
                     <br><br>
-                    Let’s talk and discuss your player’s goals and identify the training approach that best supports their development and long-term success.
+                    Let’s connect to discuss your player’s goals and identify the training approach that best supports their development and long-term success.
                 </p>
 
                 <div class="coach-profile">
@@ -580,7 +578,7 @@ footer{
                 </div>
 
                 <button type="button" class="button" id="openContactModal">
-                    Let’s Talk
+                    Let’s Connect
                 </button>
             </div>
         </div>
@@ -608,20 +606,22 @@ footer{
             <h2>Thank you for your message!</h2>
             <p>I’ll be in touch soon to discuss your player’s goals and next steps.</p>
 
-            <a href="https://www.instagram.com/soccercoachcarsten/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="instagram-button"
-               aria-label="Follow Coach Carsten on Instagram">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
-                    <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
-                    <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
-                </svg>
-                <span>Follow on Instagram</span>
-            </a>
-
-            <br>
+            <div class="confirmation-instagram">
+                <a href="https://www.instagram.com/soccercoachcarsten/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="instagram-link"
+                   aria-label="Follow Soccer Coach Carsten on Instagram">
+                    <svg class="instagram-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"
+                              fill="none" stroke="currentColor" stroke-width="2"></rect>
+                        <circle cx="12" cy="12" r="4"
+                                fill="none" stroke="currentColor" stroke-width="2"></circle>
+                        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
+                    </svg>
+                    <span class="instagram-handle">@SoccerCoachCarsten</span>
+                </a>
+            </div>
 
             <button type="button" class="button" id="closeConfirmation">Close</button>
         </div>
@@ -667,14 +667,16 @@ footer{
         <a href="https://www.instagram.com/soccercoachcarsten/"
            target="_blank"
            rel="noopener noreferrer"
-           class="instagram-button"
-           aria-label="Follow SoccerCoachCarsten on Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
-                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+           class="instagram-link"
+           aria-label="Follow Soccer Coach Carsten on Instagram">
+            <svg class="instagram-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5"
+                      fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <circle cx="12" cy="12" r="4"
+                        fill="none" stroke="currentColor" stroke-width="2"></circle>
                 <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
             </svg>
-            <span>Follow on Instagram</span>
+            <span class="instagram-handle">@SoccerCoachCarsten</span>
         </a>
     </div>
 
