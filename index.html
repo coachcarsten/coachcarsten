@@ -1,3 +1,140 @@
+
+
+Pasted text.txt
+Document
+on below html code from coachcarsten.com index html create an Instagram button at the bottom of the page, as well as on the contact form confirmation page: 
+
+You can add this clean Instagram button without changing the look and feel of CoachCarsten.com. The page you shared contains the footer and the contact form confirmation section shown below. 
+
+
+1. Add this CSS
+Place it near your other button styles.
+
+.instagram-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:14px 28px;
+    background:transparent;
+    border:2px solid #d7b56d;
+    color:#d7b56d;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.instagram-button:hover{
+    background:#d7b56d;
+    color:#011029;
+}
+
+.instagram-button svg{
+    width:20px;
+    height:20px;
+    fill:currentColor;
+}
+2. Add this button above the footer copyright
+Insert immediately before:
+
+© 2026 CoachCarsten.com
+so your footer becomes:
+
+<footer>
+
+    <a href="https://instagram.com/soccercoachcarsten"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="instagram-button">
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm11.5 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+        </svg>
+
+        Follow on Instagram
+
+    </a>
+
+    <br><br>
+
+    © 2026 <span class="highlight">CoachCarsten.com</span><br>
+    Located in Fort Mill, South Carolina<br>
+
+    <div class="legal-links">
+        <a href="#" id="openPrivacyModal">Privacy Policy</a>
+    </div>
+
+</footer>
+3. Add the same button to the confirmation page
+Inside the confirmation block, place it just above the Close button:
+
+<a href="https://instagram.com/soccercoachcarsten"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="instagram-button">
+
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm11.5 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+    </svg>
+
+    Follow @soccercoachcarsten
+
+</a>
+
+<br><br>
+I would also recommend adding a short line above the Instagram button on the confirmation page to increase engagement:
+
+While you're here, follow @soccercoachcarsten for player development tips, drills, and coaching insights.
+
+This typically increases social follows after someone has already taken the time to contact you.
+
+
+can you make the button look like the actual instagram logo and create the entire html code to copy and paste it to replace current code
+
+Yes—I can. However, your current index.html is 537 lines long, which exceeds the maximum amount of code I can return in a single chat response. 
+
+
+The cleanest solution is for me to modify your existing file and return a complete updated index.html that you can copy or download.
+
+The updated version will include:
+
+✅ An official-looking Instagram button (using the authentic Instagram glyph in a circular icon)
+
+✅ Instagram brand gradient background
+
+✅ Links to https://instagram.com/soccercoachcarsten
+
+✅ Button centered above the footer
+
+✅ Matching Instagram button on the contact form confirmation page
+
+✅ Hover animation consistent with the premium CoachCarsten.com design
+
+✅ Responsive on desktop and mobile
+
+✅ No other changes to your website
+
+Because the full HTML is longer than what fits in one response, I can't paste the entire modified file directly into the chat without it being truncated. The best approach is to generate the updated index.html as a downloadable file containing all 537 lines with the Instagram buttons already integrated.
+
+
+ok
+
+Worked for 34s
+Done. I added the Instagram-gradient logo button:
+
+At the bottom of the main page
+
+On the contact form confirmation screen
+
+Linked to @soccercoachcarsten
+
+Responsive for desktop and mobile
+
+Without changing the rest of the website
+
+index.html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,32 +253,7 @@ text-align:left;
 .button:hover{
     background:white;
 }
-.instagram-button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding:14px 28px;
-    background:transparent;
-    border:2px solid #d7b56d;
-    color:#d7b56d;
-    text-decoration:none;
-    border-radius:40px;
-    font-weight:600;
-    transition:.3s;
-}
 
-.instagram-button:hover{
-    background:#d7b56d;
-    color:#011029;
-}
-
-.instagram-button svg{
-    width:20px;
-    height:20px;
-    fill:currentColor;
-}
-	
 form{
     max-width:700px;
     margin:auto;
@@ -325,6 +437,47 @@ footer{
 }
 
 
+.instagram-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:13px 24px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    border-radius:40px;
+    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    box-shadow:0 8px 24px rgba(214,41,118,.28);
+    transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+.instagram-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px rgba(214,41,118,.38);
+    filter:brightness(1.06);
+}
+
+.instagram-button:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:4px;
+}
+
+.instagram-button svg{
+    width:22px;
+    height:22px;
+    flex-shrink:0;
+}
+
+.instagram-footer{
+    margin-bottom:24px;
+}
+
+.confirmation .instagram-button{
+    margin-top:8px;
+    margin-bottom:14px;
+}
+
 .legal-links{margin-top:12px;font-size:.9rem;}
 .legal-links a{color:#d7b56d;text-decoration:none;}
 .legal-links a:hover{text-decoration:underline;}
@@ -416,20 +569,15 @@ Let's connect to discuss your player's goals and identify the training approach 
             <div class="confirmation-icon" aria-hidden="true">✓</div>
             <h2>Thank You for your message!</h2>
             <p>I’ll be in touch soon to discuss your player’s goals and next steps.</p>
-			<a href="https://instagram.com/soccercoachcarsten"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="instagram-button">
-
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm11.5 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+            <a href="https://www.instagram.com/soccercoachcarsten/" target="_blank" rel="noopener noreferrer" class="instagram-button" aria-label="Follow Coach Carsten on Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
     </svg>
-
-    Follow @soccercoachcarsten
-
+    <span>Follow @soccercoachcarsten</span>
 </a>
-
-<br><br>
+            <br>
             <button type="button" class="button" id="closeConfirmation">Close</button>
         </div>
     </div>
@@ -455,31 +603,16 @@ Let's connect to discuss your player's goals and identify the training approach 
 </div>
 
 <footer>
-	<footer>
-
-    <a href="https://instagram.com/soccercoachcarsten"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="instagram-button">
-
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm11.5 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
-        </svg>
-
-        Follow on Instagram
-
-    </a>
-
-    <br><br>
-
-    © 2026 <span class="highlight">CoachCarsten.com</span><br>
-    Located in Fort Mill, South Carolina<br>
-
-    <div class="legal-links">
-        <a href="#" id="openPrivacyModal">Privacy Policy</a>
+    <div class="instagram-footer">
+        <a href="https://www.instagram.com/soccercoachcarsten/" target="_blank" rel="noopener noreferrer" class="instagram-button" aria-label="Follow Coach Carsten on Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
+    </svg>
+    <span>Follow @soccercoachcarsten</span>
+</a>
     </div>
-
-</footer>
     © 2026 <span class="highlight">CoachCarsten.com</span><br>
     Located in Fort Mill, South Carolina<br><div class="legal-links"><a href="#" id="openPrivacyModal">Privacy Policy</a></div>
 </footer>
@@ -599,3 +732,4 @@ document.body.classList.remove('modal-open');
 </script>
 </body>
 </html>
+
