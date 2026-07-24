@@ -5,31 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CoachCarsten.com | Youth Soccer Coaching</title>
+<meta name="description" content="Private youth soccer coaching in Fort Mill, South Carolina. Personalized player development focused on mindset, technique, and Soccer IQ.">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --navy:#011029;
+    --navy-light:#01112d;
+    --gold:#d7b56d;
+    --white:#ffffff;
+    --text:#d8d8d8;
+    --muted:#999999;
+    --border:#333333;
+    --modal-overlay:rgba(0,0,0,.75);
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:'Montserrat',sans-serif;
-    background:#011029;
-    color:white;
+    min-height:100vh;
+    font-family:"Montserrat",sans-serif;
+    background:var(--navy);
+    color:var(--white);
     line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
 }
 
 body.modal-open{
     overflow:hidden;
 }
 
+img{
+    max-width:100%;
+}
+
+button,
+input,
+textarea{
+    font:inherit;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
 .container{
     width:90%;
     max-width:1200px;
-    margin:auto;
+    margin:0 auto;
 }
 
 header{
@@ -38,19 +74,16 @@ header{
 }
 
 header img{
+    display:block;
     width:480px;
     max-width:90%;
+    margin:0 auto;
 }
 
 .hero{
     position:relative;
-    min-height:auto;
     text-align:center;
     padding:5px 0 40px;
-}
-
-.hero .container{
-    position:relative;
 }
 
 .hero-content{
@@ -58,68 +91,102 @@ header img{
     margin:0 auto;
 }
 
-.coach-profile{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:48px;
-margin:40px auto 32px;
-max-width:850px;
-text-align:left;
-}
-.coach-photo{width:260px;flex-shrink:0;}
-.coach-photo img{display:block;width:100%;}
-.coach-bio h3{color:#d7b56d;font-size:1.6rem;font-weight:600;margin-bottom:10px;}
-.coach-bio p{color:#d8d8d8;font-size:0.85rem;font-weight:400;line-height:1.7;}
-@media(max-width:768px){
-.coach-profile{flex-direction:column;text-align:center;gap:24px;}
-.coach-bio{text-align:center;}
-}
-
 .hero h1{
-    color:#d7b56d;
+    color:var(--gold);
     font-size:2.5rem;
+    line-height:1.2;
     margin-bottom:20px;
     font-weight:700;
 }
 
 .hero h2{
-    color:#d7b56d;
+    color:var(--gold);
     font-weight:500;
     margin-bottom:25px;
 }
 
 .hero p{
     max-width:none;
-    margin:auto;
+    margin:0 auto;
     font-size:1.15rem;
-    color:#d8d8d8;
+    color:var(--text);
+}
+
+.coach-profile{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:48px;
+    margin:40px auto 32px;
+    max-width:850px;
+    text-align:left;
+}
+
+.coach-photo{
+    width:260px;
+    flex-shrink:0;
+}
+
+.coach-photo img{
+    display:block;
+    width:100%;
+}
+
+.coach-bio h3{
+    color:var(--gold);
+    font-size:1.6rem;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.coach-bio p{
+    color:var(--text);
+    font-size:.85rem;
+    font-weight:400;
+    line-height:1.7;
+}
+
+.gold-bullet{
+    color:var(--gold);
 }
 
 .button{
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     margin-top:40px;
     padding:14px 28px;
-    background:#d7b56d;
-    color:#1c1f22;
-    text-decoration:none;
-    font-weight:700;
-    border-radius:40px;
     min-width:240px;
     max-width:240px;
-
+    border:0;
+    border-radius:40px;
+    background:var(--gold);
+    color:#1c1f22;
+    text-decoration:none;
     text-align:center;
-
-    transition:.3s;
+    font-weight:700;
+    cursor:pointer;
+    transition:background-color .3s ease, transform .15s ease;
+    -webkit-appearance:none;
+    appearance:none;
 }
 
 .button:hover{
-    background:white;
+    background:var(--white);
+}
+
+.button:active{
+    transform:scale(.98);
+}
+
+.button:focus-visible{
+    outline:3px solid var(--white);
+    outline-offset:4px;
 }
 
 form{
     max-width:700px;
-    margin:auto;
+    margin:0 auto;
 }
 
 input,
@@ -127,55 +194,129 @@ textarea{
     width:100%;
     padding:18px;
     margin-bottom:20px;
-    border:none;
+    border:1px solid transparent;
     border-radius:8px;
-    font:inherit;
+    background:var(--white);
+    color:#111;
     font-size:16px;
 }
 
-textarea{
-    resize:vertical;
-    min-height:150px;
+input:focus,
+textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(215,181,109,.22);
 }
 
-button{
+textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+form button[type="submit"]{
     width:100%;
-    background:#d7b56d;
-    color:#1c1f22;
-    border:none;
     padding:18px;
+    border:0;
+    border-radius:8px;
+    background:var(--gold);
+    color:#1c1f22;
     font-size:18px;
     font-weight:700;
-    border-radius:8px;
     cursor:pointer;
-    transition:.3s;
+    transition:background-color .3s ease, opacity .3s ease;
+    -webkit-appearance:none;
+    appearance:none;
 }
 
-button:hover{
-    background:white;
+form button[type="submit"]:hover{
+    background:var(--white);
+}
+
+form button[type="submit"]:disabled{
+    cursor:not-allowed;
+    opacity:.65;
 }
 
 footer{
-    text-align:center;
-    padding:40px;
-    color:#999;
-    border-top:1px solid #333;
     margin-top:80px;
+    padding:40px 20px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    text-align:center;
 }
 
 .highlight{
-    color:#d7b56d;
+    color:var(--gold);
     font-weight:600;
 }
 
-/* Contact modal */
+/* Instagram button */
+.instagram-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    position:relative;
+    overflow:hidden;
+    padding:13px 24px;
+    border:0;
+    border-radius:40px;
+    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    color:var(--white);
+    text-decoration:none;
+    font-weight:700;
+    line-height:1.2;
+    box-shadow:0 8px 24px rgba(214,41,118,.28);
+    transition:filter .3s ease, transform .15s ease;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-appearance:none;
+    appearance:none;
+    isolation:isolate;
+}
+
+.instagram-button:hover{
+    filter:brightness(1.18);
+}
+
+.instagram-button:active{
+    filter:brightness(.95);
+    transform:scale(.98);
+}
+
+.instagram-button:focus{
+    outline:none;
+}
+
+.instagram-button:focus-visible{
+    outline:3px solid var(--white);
+    outline-offset:4px;
+}
+
+.instagram-button svg{
+    display:block;
+    width:22px;
+    height:22px;
+    flex-shrink:0;
+    pointer-events:none;
+}
+
+.instagram-button span{
+    pointer-events:none;
+}
+
+.instagram-footer{
+    margin-bottom:24px;
+}
+
+/* Modals */
 .modal{
     display:none;
     position:fixed;
     z-index:9999;
     inset:0;
     padding:24px;
-    background:rgba(0,0,0,.75);
+    background:var(--modal-overlay);
+    -webkit-backdrop-filter:blur(6px);
     backdrop-filter:blur(6px);
     align-items:center;
     justify-content:center;
@@ -191,57 +332,57 @@ footer{
     max-width:620px;
     max-height:90vh;
     overflow-y:auto;
-    background:#01112D;
     padding:40px;
+    border:2px solid var(--gold);
     border-radius:18px;
-    border:2px solid #d7b56d;
+    background:var(--navy-light);
     box-shadow:0 20px 60px rgba(0,0,0,.5);
+    -webkit-overflow-scrolling:touch;
 }
 
 .modal-content h2{
-    text-align:center;
     margin-bottom:28px;
+    text-align:center;
+    color:var(--gold);
+}
+
+.modal-content h3{
+    margin:18px 0 8px;
+    color:var(--white);
+}
+
+.modal-content p{
+    color:var(--text);
+}
+
+.modal-content a{
+    color:var(--gold);
 }
 
 .close{
     position:absolute;
     top:10px;
     right:18px;
-    border:0;
     width:auto;
     padding:0;
+    border:0;
     background:transparent;
-    color:white;
+    color:var(--white);
     font-size:36px;
     line-height:1;
     cursor:pointer;
+    -webkit-appearance:none;
+    appearance:none;
 }
 
 .close:hover{
     background:transparent;
-    color:#d7b56d;
+    color:var(--gold);
 }
 
-
-
-}
-
-@media(max-width:768px){
-    .hero h1{
-        font-size:2.2rem;
-    }
-
-    .hero h2{
-        font-size:1.2rem;
-    }
-
-    .modal{
-        padding:16px;
-    }
-
-    .modal-content{
-        padding:32px 22px 24px;
-    }
+.close:focus-visible{
+    outline:2px solid var(--white);
+    outline-offset:4px;
 }
 
 .form-status{
@@ -250,7 +391,7 @@ footer{
     padding:14px 16px;
     border-radius:8px;
     text-align:center;
-    font-size:0.95rem;
+    font-size:.95rem;
 }
 
 .form-status.error{
@@ -262,8 +403,8 @@ footer{
 
 .confirmation{
     display:none;
-    text-align:center;
     padding:18px 6px 8px;
+    text-align:center;
 }
 
 .confirmation.is-visible{
@@ -271,67 +412,27 @@ footer{
 }
 
 .confirmation-icon{
-    width:72px;
-    height:72px;
-    margin:0 auto 22px;
-    border:2px solid #d7b56d;
-    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#d7b56d;
+    width:72px;
+    height:72px;
+    margin:0 auto 22px;
+    border:2px solid var(--gold);
+    border-radius:50%;
+    color:var(--gold);
     font-size:38px;
     font-weight:600;
 }
 
 .confirmation h2{
-    color:#d7b56d;
     margin-bottom:14px;
+    color:var(--gold);
 }
 
 .confirmation p{
-    color:#d8d8d8;
     margin-bottom:24px;
-}
-
-.confirmation .button{
-    margin-top:8px;
-    border-radius:40px;
-}
-
-
-.instagram-button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding:13px 24px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:700;
-    border-radius:40px;
-    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-    box-shadow:0 8px 24px rgba(214,41,118,.28);
-    transition:.3s;
-}
-
-.instagram-button:hover{
-    filter:brightness(1.18);
-}
-
-.instagram-button:focus-visible{
-    outline:3px solid #fff;
-    outline-offset:4px;
-}
-
-.instagram-button svg{
-    width:22px;
-    height:22px;
-    flex-shrink:0;
-}
-
-.instagram-footer{
-    margin-bottom:24px;
+    color:var(--text);
 }
 
 .confirmation .instagram-button{
@@ -339,88 +440,164 @@ footer{
     margin-bottom:14px;
 }
 
-.legal-links{margin-top:12px;font-size:.9rem;}
-.legal-links a{color:#d7b56d;text-decoration:none;}
-.legal-links a:hover{text-decoration:underline;}
-.privacy-policy{
-max-width:900px;
-margin:50px auto 20px;
-padding:30px;
-background:#01112D;
-border:1px solid #2a3658;
-border-radius:12px;
-font-size:.95rem;
-color:#d8d8d8;
+.confirmation .button{
+    margin-top:8px;
+    border-radius:40px;
 }
-.privacy-policy h2{color:#d7b56d;margin-bottom:16px;}
-.privacy-policy h3{color:#fff;margin:18px 0 8px;}
 
+.legal-links{
+    margin-top:12px;
+    font-size:.9rem;
+}
+
+.legal-links a{
+    color:var(--gold);
+    text-decoration:none;
+}
+
+.legal-links a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:768px){
+    header{
+        padding:28px 0 20px;
+    }
+
+    .hero{
+        padding-bottom:20px;
+    }
+
+    .hero h1{
+        font-size:2.2rem;
+    }
+
+    .hero h2{
+        font-size:1.2rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .coach-profile{
+        flex-direction:column;
+        gap:24px;
+        margin-top:34px;
+        text-align:center;
+    }
+
+    .coach-bio{
+        text-align:center;
+    }
+
+    .modal{
+        padding:16px;
+    }
+
+    .modal-content{
+        padding:32px 22px 24px;
+    }
+
+    footer{
+        margin-top:55px;
+    }
+}
+
+@media(max-width:430px){
+    .container{
+        width:92%;
+    }
+
+    .hero h1{
+        font-size:1.9rem;
+    }
+
+    .coach-photo{
+        width:230px;
+    }
+
+    .instagram-button{
+        padding:12px 18px;
+        font-size:.95rem;
+    }
+
+    footer{
+        padding:34px 14px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+    }
+}
 </style>
 </head>
 
 <body>
+
 <header>
     <div class="container">
-        <img src="coachcarsten_logo.png" alt="CoachCarsten Logo">
+        <img src="coachcarsten_logo.png" alt="CoachCarsten logo">
     </div>
 </header>
 
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-        <h1>Maximize Your Potential</h1>
-        <h2> </h2>
+<main>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Maximize Your Potential</h1>
 
-        <p>
-        Every player’s development journey is different. Whether it is preparing to move from recreational to club soccer, competing for a place on a new or higher-level team, supplementing team practice, or refining skills during the off-season.
-<br><br>Blending proven European training methodology with a modern, high-performance approach to player development, each session is designed to develop Mindset, refine Technique, and elevate Soccer IQ — creating confident players who make better decisions, perform under pressure, and maximize their potential on the field.
-<br><br>
-Let's connect to discuss your player's goals and identify the training approach that best supports their development and long-term success.
-<br><br>
-                    </p>
-
-        <div class="coach-profile">
-            <div class="coach-photo">
-                <img src="coachcarsten.png" alt="Coach Carsten">
-            </div>
-            <div class="coach-bio">
-                <h3>Carsten Doerfer</h3>
                 <p>
-<span style="color:#d7b56d;">•</span> Former Competitive European Player<br>
-<span style="color:#d7b56d;">•</span> U.S. Soccer D Licensed Coach<br>
-<span style="color:#d7b56d;">•</span> U.S. Soccer Background Checked<br>
-<span style="color:#d7b56d;">•</span> SafeSport Certified<br>
-<span style="color:#d7b56d;">•</span> Coerver Coach<br>
+                    Every player’s development journey is different. Whether it is preparing to move from recreational to club soccer, competing for a place on a new or higher-level team, supplementing team practice, or refining skills during the off-season.
+                    <br><br>
+                    Blending proven European training methodology with a modern, high-performance approach to player development, each session is designed to develop Mindset, refine Technique, and elevate Soccer IQ — creating confident players who make better decisions, perform under pressure, and maximize their potential on the field.
+                    <br><br>
+                    Let’s connect to discuss your player’s goals and identify the training approach that best supports their development and long-term success.
+                </p>
 
+                <div class="coach-profile">
+                    <div class="coach-photo">
+                        <img src="coachcarsten.png" alt="Coach Carsten">
+                    </div>
 
+                    <div class="coach-bio">
+                        <h3>Carsten Doerfer</h3>
+                        <p>
+                            <span class="gold-bullet">•</span> Former Competitive European Player<br>
+                            <span class="gold-bullet">•</span> U.S. Soccer D Licensed Coach<br>
+                            <span class="gold-bullet">•</span> U.S. Soccer Background Checked<br>
+                            <span class="gold-bullet">•</span> SafeSport Certified<br>
+                            <span class="gold-bullet">•</span> Coerver Coach
+                        </p>
+                    </div>
+                </div>
 
-
-
-
-
-
-</p>
-		            </div>
+                <button type="button" class="button" id="openContactModal">
+                    Let’s Connect
+                </button>
+            </div>
         </div>
-
-        <button type="button" class="button" id="openContactModal">
-            Let's Connect
-        </button>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" aria-hidden="true">
     <div class="modal-content">
         <button type="button" class="close" id="closeContactModal" aria-label="Close contact form">&times;</button>
 
-        <h2 id="contactModalTitle">Let's Connect</h2>
+        <h2 id="contactModalTitle">Let’s Connect</h2>
 
         <form id="contactForm" action="https://formspree.io/f/mojgdjan" method="POST">
             <input type="text" name="name" placeholder="Name" autocomplete="name" required>
             <input type="email" name="email" placeholder="Email" autocomplete="email" required>
             <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" required>
-            <textarea name="message" placeholder="Tell me about your player and their goals.." required></textarea>
+            <textarea name="message" placeholder="Tell me about your player and their goals..." required></textarea>
 
             <button type="submit" id="submitContactForm">Send Message</button>
             <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
@@ -428,168 +605,225 @@ Let's connect to discuss your player's goals and identify the training approach 
 
         <div id="contactConfirmation" class="confirmation" aria-live="polite">
             <div class="confirmation-icon" aria-hidden="true">✓</div>
-            <h2>Thank You for your message!</h2>
+            <h2>Thank you for your message!</h2>
             <p>I’ll be in touch soon to discuss your player’s goals and next steps.</p>
-            <a href="https://www.instagram.com/soccercoachcarsten/" target="_blank" rel="noopener noreferrer" class="instagram-button" aria-label="Follow Coach Carsten on Instagram">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
-        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
-        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
-    </svg>
-    <span>Follow on Instagram</span>
-</a>
+
+            <a href="https://www.instagram.com/soccercoachcarsten/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="instagram-button"
+               aria-label="Follow Coach Carsten on Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                    <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                    <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
+                </svg>
+                <span>Follow on Instagram</span>
+            </a>
+
             <br>
+
             <button type="button" class="button" id="closeConfirmation">Close</button>
         </div>
     </div>
 </div>
 
-
-
 <div id="privacyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true">
     <div class="modal-content">
         <button type="button" class="close" id="closePrivacyModal" aria-label="Close privacy policy">&times;</button>
+
         <h2 id="privacyTitle">Privacy Policy</h2>
+
         <p><strong>Effective Date:</strong> July 21, 2026</p>
-        <p>CoachCarsten.com respects your privacy. Information you submit through the contact form is used only to respond to your inquiry and provide coaching services.</p>
+
+        <p>
+            CoachCarsten.com respects your privacy. Information you submit through the contact form is used only to respond to your inquiry and provide coaching services.
+        </p>
+
         <h3>Information We Collect</h3>
-        <p>We collect the information you voluntarily provide, including your name, email address, phone number, and message.</p>
+        <p>
+            We collect the information you voluntarily provide, including your name, email address, phone number, and message.
+        </p>
+
         <h3>How We Use Your Information</h3>
-        <p>Your information is used only to communicate with you about coaching services. We do not sell or rent your personal information.</p>
+        <p>
+            Your information is used only to communicate with you about coaching services. We do not sell or rent your personal information.
+        </p>
+
         <h3>Third-Party Services</h3>
-        <p>This website uses Formspree to securely process contact form submissions.</p>
+        <p>
+            This website uses Formspree to process contact form submissions.
+        </p>
+
         <h3>Contact</h3>
-        <p>Email: <a href="mailto:letsgo@coachcarsten.com">letsgo@coachcarsten.com</a></p>
+        <p>
+            Email: <a href="mailto:letsgo@coachcarsten.com">letsgo@coachcarsten.com</a>
+        </p>
     </div>
 </div>
 
 <footer>
     <div class="instagram-footer">
-        <a href="https://www.instagram.com/soccercoachcarsten/" target="_blank" rel="noopener noreferrer" class="instagram-button" aria-label="Follow @SoccerCoachCarsten on Instagram">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
-        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
-        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
-    </svg>
-    <span>Follow on Instagram</span>
-</a>
+        <a href="https://www.instagram.com/soccercoachcarsten/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="instagram-button"
+           aria-label="Follow SoccerCoachCarsten on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"></circle>
+            </svg>
+            <span>Follow on Instagram</span>
+        </a>
     </div>
+
     © 2026 <span class="highlight">CoachCarsten.com</span><br>
-    Located in Fort Mill, South Carolina<br><div class="legal-links"><a href="#" id="openPrivacyModal">Privacy Policy</a></div>
+    Located in Fort Mill, South Carolina
+
+    <div class="legal-links">
+        <a href="#" id="openPrivacyModal">Privacy Policy</a>
+    </div>
 </footer>
 
 <script>
-const modal = document.getElementById('contactModal');
-const openButton = document.getElementById('openContactModal');
-const closeButton = document.getElementById('closeContactModal');
-const contactForm = document.getElementById('contactForm');
-const submitButton = document.getElementById('submitContactForm');
-const formStatus = document.getElementById('formStatus');
-const confirmation = document.getElementById('contactConfirmation');
-const closeConfirmationButton = document.getElementById('closeConfirmation');
+const body = document.body;
 
-function openModal(){
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-    closeButton.focus();
+const contactModal = document.getElementById("contactModal");
+const openContactButton = document.getElementById("openContactModal");
+const closeContactButton = document.getElementById("closeContactModal");
+const contactForm = document.getElementById("contactForm");
+const submitButton = document.getElementById("submitContactForm");
+const formStatus = document.getElementById("formStatus");
+const confirmation = document.getElementById("contactConfirmation");
+const closeConfirmationButton = document.getElementById("closeConfirmation");
+
+const privacyModal = document.getElementById("privacyModal");
+const openPrivacyButton = document.getElementById("openPrivacyModal");
+const closePrivacyButton = document.getElementById("closePrivacyModal");
+
+let lastFocusedElement = null;
+
+function openModal(modal, focusTarget){
+    lastFocusedElement = document.activeElement;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    body.classList.add("modal-open");
+
+    window.setTimeout(() => {
+        focusTarget.focus();
+    }, 0);
+}
+
+function closeModal(modal){
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    if(!document.querySelector(".modal.is-open")){
+        body.classList.remove("modal-open");
+    }
+
+    if(lastFocusedElement){
+        lastFocusedElement.focus();
+    }
 }
 
 function resetContactModal(){
-    contactForm.style.display = '';
-    confirmation.classList.remove('is-visible');
-    formStatus.className = 'form-status';
-    formStatus.textContent = '';
+    contactForm.style.display = "";
+    confirmation.classList.remove("is-visible");
+    formStatus.className = "form-status";
+    formStatus.textContent = "";
     submitButton.disabled = false;
-    submitButton.textContent = 'Send Message';
+    submitButton.textContent = "Send Message";
 }
 
-function closeModal(){
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
+function closeContactModal(){
+    closeModal(contactModal);
     resetContactModal();
-    openButton.focus();
 }
 
-openButton.addEventListener('click', openModal);
-closeButton.addEventListener('click', closeModal);
+openContactButton.addEventListener("click", () => {
+    openModal(contactModal, closeContactButton);
+});
 
-modal.addEventListener('click', function(event){
-    if(event.target === modal){
-        closeModal();
+closeContactButton.addEventListener("click", closeContactModal);
+closeConfirmationButton.addEventListener("click", closeContactModal);
+
+contactModal.addEventListener("click", event => {
+    if(event.target === contactModal){
+        closeContactModal();
     }
 });
 
-document.addEventListener('keydown', function(event){
-    if(event.key === 'Escape' && modal.classList.contains('is-open')){
-        closeModal();
+openPrivacyButton.addEventListener("click", event => {
+    event.preventDefault();
+    openModal(privacyModal, closePrivacyButton);
+});
+
+closePrivacyButton.addEventListener("click", () => {
+    closeModal(privacyModal);
+});
+
+privacyModal.addEventListener("click", event => {
+    if(event.target === privacyModal){
+        closeModal(privacyModal);
     }
 });
 
-contactForm.addEventListener('submit', async function(event){
+document.addEventListener("keydown", event => {
+    if(event.key !== "Escape"){
+        return;
+    }
+
+    if(contactModal.classList.contains("is-open")){
+        closeContactModal();
+    }else if(privacyModal.classList.contains("is-open")){
+        closeModal(privacyModal);
+    }
+});
+
+contactForm.addEventListener("submit", async event => {
     event.preventDefault();
 
-    formStatus.className = 'form-status';
-    formStatus.textContent = '';
+    formStatus.className = "form-status";
+    formStatus.textContent = "";
     submitButton.disabled = true;
-    submitButton.textContent = 'Sending...';
+    submitButton.textContent = "Sending...";
 
     try{
         const response = await fetch(contactForm.action, {
-            method: contactForm.method,
-            body: new FormData(contactForm),
-            headers: {
-                'Accept': 'application/json'
+            method:contactForm.method,
+            body:new FormData(contactForm),
+            headers:{
+                Accept:"application/json"
             }
         });
 
         if(response.ok){
             contactForm.reset();
-            contactForm.style.display = 'none';
-            confirmation.classList.add('is-visible');
+            contactForm.style.display = "none";
+            confirmation.classList.add("is-visible");
             closeConfirmationButton.focus();
-        }else{
-            const data = await response.json().catch(() => ({}));
-            const message = data.errors
-                ? data.errors.map(error => error.message).join(' ')
-                : 'Your message could not be sent. Please check the form and try again.';
-
-            formStatus.textContent = message;
-            formStatus.className = 'form-status error';
-            submitButton.disabled = false;
-            submitButton.textContent = 'Send Message';
+            return;
         }
-    }catch(error){
-        formStatus.textContent = 'There was a connection problem. Please try again.';
-        formStatus.className = 'form-status error';
+
+        const data = await response.json().catch(() => ({}));
+        const message = data.errors
+            ? data.errors.map(error => error.message).join(" ")
+            : "Your message could not be sent. Please check the form and try again.";
+
+        formStatus.textContent = message;
+        formStatus.className = "form-status error";
         submitButton.disabled = false;
-        submitButton.textContent = 'Send Message';
+        submitButton.textContent = "Send Message";
+    }catch(error){
+        formStatus.textContent = "There was a connection problem. Please try again.";
+        formStatus.className = "form-status error";
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
     }
 });
-
-closeConfirmationButton.addEventListener('click', closeModal);
-
-
-// Privacy Policy Modal
-const privacyModal=document.getElementById('privacyModal');
-const openPrivacyModal=document.getElementById('openPrivacyModal');
-const closePrivacyModal=document.getElementById('closePrivacyModal');
-openPrivacyModal.addEventListener('click',function(e){
-e.preventDefault();
-privacyModal.classList.add('is-open');
-privacyModal.setAttribute('aria-hidden','false');
-document.body.classList.add('modal-open');
-});
-closePrivacyModal.addEventListener('click',closePrivacy);
-privacyModal.addEventListener('click',e=>{if(e.target===privacyModal)closePrivacy();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&privacyModal.classList.contains('is-open'))closePrivacy();});
-function closePrivacy(){
-privacyModal.classList.remove('is-open');
-privacyModal.setAttribute('aria-hidden','true');
-document.body.classList.remove('modal-open');
-}
-
 </script>
+
 </body>
 </html>
