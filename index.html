@@ -1966,6 +1966,112 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
   }
 }
 
+
+/* ---------- iPhone/mobile header + hero fit fix ---------- */
+@media (max-width:600px){
+  /* Give the wide campaign logo enough visual presence on a phone. */
+  .site-header{padding:8px 0 4px}
+  .nav{
+    min-height:auto;
+    display:block;
+  }
+  .brand-v5{
+    width:100%;
+    max-width:100%;
+  }
+  .brand-logo-v5,
+  .brand-logo-v6{
+    width:min(100%,340px)!important;
+    max-width:340px;
+    height:auto;
+    margin:0;
+  }
+
+  /* Keep the opening copy inside the iPhone viewport. */
+  .hero-v5{
+    padding-top:18px;
+  }
+  .hero-grid-v5,
+  .hero-copy-column,
+  .hero-copy-v5{
+    min-width:0;
+    width:100%;
+    max-width:100%;
+  }
+  .hero-copy-v5{
+    padding-left:10px;
+    padding-right:2px;
+  }
+  .hero-copy-v5::before{
+    left:0;
+  }
+  .eyebrow{
+    max-width:100%;
+    gap:9px;
+    margin-bottom:14px;
+    font-size:.66rem;
+    line-height:1.35;
+    letter-spacing:.12em;
+    white-space:normal;
+  }
+  .eyebrow::before{
+    width:28px;
+    flex:0 0 28px;
+  }
+  .hero-copy-v5 h1{
+    width:100%;
+    max-width:100%;
+    font-size:clamp(3rem,13.2vw,4.2rem)!important;
+    line-height:.86;
+    letter-spacing:0;
+    overflow:visible;
+  }
+  .hero-copy-v5 h1 span,
+  .hero-copy-v5 h1 .work-gradient{
+    width:100%;
+    max-width:100%;
+  }
+  .work-gradient{
+    width:auto;
+  }
+  .hero-copy-v5 .hero-copy{
+    width:100%;
+    max-width:100%;
+    font-size:.91rem;
+    line-height:1.62;
+  }
+  .hero-actions-v5{
+    width:100%;
+    gap:10px;
+  }
+  .secondary-link-v5{
+    flex:1 1 145px;
+    min-width:0;
+    padding:11px 12px;
+    gap:8px;
+    font-size:.66rem;
+    letter-spacing:.07em;
+  }
+  .secondary-link-v5::after{
+    width:28px;
+    height:28px;
+    min-width:28px;
+  }
+}
+
+@media (max-width:390px){
+  .brand-logo-v5,
+  .brand-logo-v6{
+    width:min(100%,326px)!important;
+  }
+  .hero-copy-v5 h1{
+    font-size:clamp(2.85rem,12.7vw,3.3rem)!important;
+  }
+  .secondary-link-v5{
+    flex-basis:100%;
+  }
+}
+
 </style>
 </head>
 <body>
