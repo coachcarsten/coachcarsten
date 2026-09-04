@@ -1583,6 +1583,28 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
   letter-spacing:.12em;
   text-transform:uppercase;
 }
+
+/* Refined hover for Development Model + Meet the Coach */
+.secondary-link-v5{
+  transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease,background .24s ease;
+}
+.secondary-link-v5::after{
+  transition:transform .24s ease,box-shadow .24s ease,background .24s ease;
+}
+.secondary-link-v5:hover{
+  transform:translateY(-3px);
+  border-color:rgba(249,9,136,.56);
+  background:#fff;
+  box-shadow:
+    0 16px 30px rgba(17,19,24,.12),
+    0 0 0 4px rgba(249,9,136,.055),
+    0 0 20px rgba(249,9,136,.20);
+}
+.secondary-link-v5:hover::after{
+  transform:translateX(2px);
+  background:linear-gradient(135deg,#111318 0%,#2a1722 100%);
+  box-shadow:0 0 13px rgba(249,9,136,.28);
+}
 .hero-grid-v5{align-items:start}
 .hero-kicker-below{
   position:absolute;
@@ -1883,7 +1905,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
     height:244px;
   }
   .field-word-rotator span{
-    font-size:clamp(1.95rem,8.3vw,2.55rem)!important;
+    font-size:clamp(3rem,12.5vw,3.75rem)!important;
     letter-spacing:.09em;
     color:rgba(255,255,255,.56);
   }
@@ -1928,6 +1950,135 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
   box-shadow:9px 9px 0 #111318!important;
 }
 
+
+/* ---------- v11: standout bottom CTA ---------- */
+.cta-action{
+  position:relative;
+  isolation:isolate;
+  padding:10px;
+}
+.cta-action::before,
+.cta-action::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  z-index:-1;
+  border-radius:10px 38px 10px 38px;
+  pointer-events:none;
+}
+.cta-action::before{
+  background:linear-gradient(110deg,var(--pink),var(--cyan),var(--pink));
+  background-size:220% 220%;
+  filter:blur(10px);
+  opacity:.72;
+  animation:ctaAura 3.4s ease-in-out infinite,ctaGradientShift 5s linear infinite;
+}
+.cta-action::after{
+  border:2px solid rgba(255,255,255,.82);
+  box-shadow:0 0 0 2px rgba(17,19,24,.12),0 0 26px rgba(255,255,255,.38);
+  animation:ctaRingPulse 2.2s ease-out infinite;
+}
+.cta-action .primary-button{
+  position:relative;
+  z-index:1;
+  overflow:hidden;
+  min-height:62px!important;
+  padding:0 32px!important;
+  border:2px solid #111318!important;
+  background:linear-gradient(135deg,#ffffff 0%,#f6f4ed 100%)!important;
+  color:#111318!important;
+  box-shadow:8px 8px 0 #111318,0 16px 34px rgba(17,19,24,.18)!important;
+  letter-spacing:.11em;
+  transform:translateZ(0);
+}
+.cta-action .primary-button::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  z-index:-1;
+  background:linear-gradient(105deg,transparent 18%,rgba(255,255,255,.34) 43%,rgba(255,255,255,.08) 56%,transparent 78%);
+  transform:translateX(-125%) skewX(-18deg);
+  animation:ctaShine 4.2s ease-in-out infinite;
+}
+.cta-action .primary-button:hover{
+  transform:translate(-3px,-3px) scale(1.025)!important;
+  background:var(--pitch)!important;
+  color:#111318!important;
+  box-shadow:11px 11px 0 var(--cyan),0 20px 40px rgba(17,19,24,.22)!important;
+}
+@keyframes ctaAura{
+  0%,100%{opacity:.52;transform:scale(.98)}
+  50%{opacity:.92;transform:scale(1.045)}
+}
+@keyframes ctaGradientShift{
+  0%{background-position:0% 50%}
+  100%{background-position:200% 50%}
+}
+@keyframes ctaRingPulse{
+  0%{transform:scale(.96);opacity:.88}
+  70%{transform:scale(1.08);opacity:0}
+  100%{transform:scale(1.08);opacity:0}
+}
+@keyframes ctaShine{
+  0%,58%,100%{transform:translateX(-125%) skewX(-18deg)}
+  74%{transform:translateX(125%) skewX(-18deg)}
+}
+/* ---------- v12: contact icon + pink button swoosh ---------- */
+.cta-action .primary-button::after{
+  content:"@"!important;
+  position:relative;
+  z-index:2;
+  display:inline-grid;
+  place-items:center;
+  width:27px;
+  height:22px;
+  margin-left:2px;
+  border:2px solid currentColor;
+  border-radius:3px;
+  font-size:.72rem;
+  font-weight:900;
+  line-height:1;
+}
+.cta-action .primary-button::after{
+  background:
+    linear-gradient(145deg,transparent 47%,currentColor 48% 52%,transparent 53%) left top/52% 62% no-repeat,
+    linear-gradient(215deg,transparent 47%,currentColor 48% 52%,transparent 53%) right top/52% 62% no-repeat;
+}
+.cta-action .primary-button::before{
+  content:"";
+  position:absolute;
+  top:-42%;
+  bottom:-42%;
+  left:-58%;
+  width:44%;
+  z-index:0;
+  pointer-events:none;
+  opacity:0;
+  background:linear-gradient(105deg,
+    transparent 0%,
+    rgba(249,9,136,.08) 20%,
+    rgba(249,9,136,.76) 46%,
+    rgba(255,83,172,.48) 62%,
+    transparent 100%);
+  filter:blur(1px);
+  transform:skewX(-22deg);
+  animation:ctaPinkSwoosh 4.6s cubic-bezier(.45,.05,.3,1) infinite;
+}
+.cta-action .primary-button:hover::before{
+  animation-duration:2.6s;
+}
+@keyframes ctaPinkSwoosh{
+  0%,48%{left:-58%;opacity:0}
+  53%{opacity:.92}
+  72%{left:118%;opacity:.82}
+  78%,100%{left:118%;opacity:0}
+}
+
+@media(max-width:760px){
+  .cta-action{padding:8px}
+  .cta-action .primary-button{min-height:58px!important;padding:0 25px!important}
+  .cta-action .primary-button::after{width:25px;height:20px}
+}
 
 /* ---------- portrait nameplate ---------- */
 .coach-nameplate{
@@ -2098,6 +2249,39 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
     width:100%!important;
     max-width:none;
   }
+}
+
+
+/* ---------- v16: black border becomes pink + teal gradient on hover ---------- */
+.secondary-link-v5{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  border:2px solid #111318;
+  background:#fff;
+  transition:transform .24s ease,background .24s ease,border-color .24s ease;
+}
+.secondary-link-v5::before{
+  content:none!important;
+}
+.secondary-link-v5:hover{
+  transform:translateY(-3px);
+  border:2px solid transparent;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(90deg,
+      var(--pink) 0%,
+      #ff58ad 38%,
+      #55dfe8 68%,
+      var(--cyan) 100%) border-box;
+  box-shadow:none;
+}
+.secondary-link-v5:hover::after{
+  /* Keep the arrow chip white and the arrow black on hover. */
+  background:#fff!important;
+  color:#111318!important;
+  border:2px solid #111318!important;
+  box-shadow:none!important;
 }
 
 
